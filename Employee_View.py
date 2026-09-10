@@ -13,7 +13,17 @@ class DbConnect:
         except Exception as e:
             return None
 class GymManagement(DbConnect):
-    pass
+    def get_object(self, id=None):
+        try:
+            self.connect = super().get_connection()
+            self.cursor = self.connect.cursor()
+            query = "select * from member where id = %s"
+            values = (id,)
+            self.cursor.execute(query, values)
+            records = self.cursor.fetchone()
+            return records
+        except Exception as e:
+            return None
 
 connection_instance = DbConnect()
 connection_instance.get_connection()
