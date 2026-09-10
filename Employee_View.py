@@ -1,7 +1,5 @@
 import mysql.connector
 
-
-
 class DbConnect:
     def get_connection(self):
         try:
@@ -14,7 +12,8 @@ class DbConnect:
             return self.connection
         except Exception as e:
             return None
-
+class GymManagement(DbConnect):
+    pass
 
 connection_instance = DbConnect()
-print(connection_instance.get_connection())
+connection_instance.get_connection()
